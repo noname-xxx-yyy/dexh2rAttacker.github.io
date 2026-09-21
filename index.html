@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Anonymous project page for an ICLR submission on adversarial vulnerabilities in dynamic dexterous human-to-robot handover.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <title>Adversarial Vulnerabilities in Dynamic Dexterous Handover</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d3557'/%3E%3Cpath d='M15 39c7-16 16-22 34-15M15 39c10 3 21 3 34-7' fill='none' stroke='%23ffffff' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='15' cy='39' r='5' fill='%232a9d67'/%3E%3Ccircle cx='49' cy='24' r='5' fill='%23d84545'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">Probing Adversarial Vulnerabilities in Dynamic Dexterous Handover</a>
+    <nav aria-label="Project sections">
+      <a href="#abstract">Abstract</a>
+      <a href="#attacks">Attacks</a>
+      <a href="#demonstrations">Demonstrations</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <h1>Probing Adversarial Vulnerabilities in Dynamic Dexterous Handover</h1>
+      <p class="venue">Anonymous ICLR Submission</p>
+    </section>
+
+    <section id="abstract" class="paper-section">
+      <h2>Abstract</h2>
+      <div class="abstract-copy">
+        <p>Dynamic Dexterous Human-to-Robot Handover (DexH2R) is an important aspect of human–robot interaction. Despite behavior-cloning methods enabling basic trajectory generation and grasping, the safety risks arising from close interaction between humans and robotic hands remain largely unexplored. In this paper, we undertake a comprehensive examination of DexH2R safety concerns by introducing different adversarial scenarios that primarily rely on 3D point clouds: 1) for grasp pose, we design a stealthy trigger to the point cloud of any object, causing the hand joints to collapse and remain closed; 2) for motion generation, we introduce two untargeted online attacks and one targeted offline attack that perturb the spatial position of the dexterous hand, preventing it from approaching the point cloud object. We conduct attacks against pre-trained victim models and introduce evaluation metrics specifically designed to assess attack effectiveness on DexH2R. Extensive experiments show that our attacks substantially reduce task success rates, with reductions of up to 100\% across a range of simulated robotic tasks. Furthermore, evaluations across simulation platforms and against defense mechanisms demonstrate the strong transferability and resilience of our designed attacks.</p>
+      </div>
+    </section>
+
+    <section id="attacks" class="paper-section">
+      <h2>Grasp Pose Attack</h2>
+      <figure class="wide-figure">
+        <img src="assets/fist-attack.png" alt="Clean open grasp and attacked closed-fist predictions" loading="lazy">
+      </figure>
+    </section>
+
+    <section id="demonstrations" class="paper-section">
+      <h2>Motion Attack</h2>
+      <p class="section-intro">The left panel of each animation shows the clean motion, while the right panel shows the motion produced under attack. Green and red denote clean and attacked hand trajectories, respectively.</p>
+      <div class="method-list">
+        <article>
+          <h3>Temporally Consistent Attack (TCA)</h3>
+          <p>An online untargeted attack that manipulates observation history to induce persistent temporal deviations and oscillatory motion.</p>
+        </article>
+        <article>
+          <h3>Critical-Point Attack (CPA)</h3>
+          <p>An online untargeted attack that perturbs a small set of influential points so that local errors propagate through the predicted trajectory.</p>
+        </article>
+        <article>
+          <h3>Physical 3D Trigger Attack (P3TA)</h3>
+          <p>An offline targeted attack that uses a compact physical trigger to steer the dexterous hand toward a predefined region.</p>
+        </article>
+      </div>
+      </section>
+
+      <section class="paper-section">
+        <div class="demo-grid motion-grid">
+          <figure>
+            <img src="assets/temporal-attack.gif" alt="Temporally Consistent Attack animation" loading="lazy">
+            <figcaption><strong>TCA</strong></figcaption>
+          </figure>
+  
+          <figure>
+            <img src="assets/critical-attack.gif" alt="Critical-Point Attack animation" loading="lazy">
+            <figcaption><strong>CPA</strong></figcaption>
+          </figure>
+  
+          <figure>
+            <img src="assets/physical-attack.gif" alt="Physical 3D Trigger Attack animation" loading="lazy">
+            <figcaption><strong>P3TA</strong></figcaption>
+          </figure>
+        </div>
+  
+      </section>
+
+
+      <section class="paper-section">
+        <div class="subsection-heading">
+        <h3>Generalization to Another Simulation Platform</h3>
+        <p>We further transfer the physical-trigger setting to a different simulator. The clean policy approaches and grasps the target, whereas the attacked policy is redirected along an incorrect path.</p>
+      </div>
+
+      <div class="demo-grid transfer-grid">
+        <figure>
+          <img src="assets/cross-sim-clean.gif" alt="Clean grasp trajectory in another simulation platform" loading="lazy">
+          <figcaption><strong>Clean</strong><span>Grasping the target object</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/cross-sim-attacked.gif" alt="Trigger-attacked trajectory moving in the wrong direction in another simulation platform" loading="lazy">
+          <figcaption><strong>Attacked</strong><span>Moving in the wrong direction</span></figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Anonymous research project page for double-blind review.</p>
+  </footer>
+</body>
+</html>
